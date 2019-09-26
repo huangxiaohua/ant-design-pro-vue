@@ -40,6 +40,13 @@ export const asyncRouterMap = [
         ]
       },
 
+      {
+        path: 'https://pro.loacg.com/docs/getting-started',
+        name: 'docs',
+        meta: { title: '文档', target: '_blank' // 打开到新窗口
+        }
+      },
+
       // forms
       {
         path: '/form',

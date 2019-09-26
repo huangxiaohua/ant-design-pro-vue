@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\.github\\ISSUE_TEMPLATE",
+    "\\src",
+    "\\src\\api",
+    "\\tests"
+  ],
+  "SelectedNode": "\\package-lock.json",
+  "PreviewInSolutionExplorer": false
+}
