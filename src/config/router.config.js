@@ -17,13 +17,13 @@ export const asyncRouterMap = [
         name: 'dashboard',
         redirect: '/dashboard/workplace',
         component: RouteView,
-        meta: { title: '仪表盘', keepAlive: true, icon: bxAnaalyse, permission: [ 'dashboard' ] },
+        meta: { title: '仪表盘', keepAlive: true, icon: bxAnaalyse, permission: [ 'BaseData' ] },
         children: [
           {
             path: '/dashboard/analysis',
             name: 'Analysis',
             component: () => import('@/views/dashboard/Analysis'),
-            meta: { title: '分析页', keepAlive: false, permission: [ 'dashboard' ] }
+            meta: { title: '分析页', keepAlive: false, permission: [ 'BaseData' ] }
           },
           // 外部链接
           {
@@ -35,7 +35,7 @@ export const asyncRouterMap = [
             path: '/dashboard/workplace',
             name: 'Workplace',
             component: () => import('@/views/dashboard/Workplace'),
-            meta: { title: '工作台', keepAlive: true, permission: [ 'dashboard' ] }
+            meta: { title: '工作台', keepAlive: true, permission: [ 'BaseData' ] }
           }
         ]
       },
@@ -52,25 +52,25 @@ export const asyncRouterMap = [
         path: '/form',
         redirect: '/form/base-form',
         component: PageView,
-        meta: { title: '表单页', icon: 'form', permission: [ 'form' ] },
+        meta: { title: '基本资料', icon: 'form', permission: [ 'BaseData' ] },
         children: [
-          {
-            path: '/form/base-form',
-            name: 'BaseForm',
-            component: () => import('@/views/form/BasicForm'),
-            meta: { title: '基础表单', keepAlive: true, permission: [ 'form' ] }
-          },
-          {
-            path: '/form/step-form',
-            name: 'StepForm',
-            component: () => import('@/views/form/stepForm/StepForm'),
-            meta: { title: '分步表单', keepAlive: true, permission: [ 'form' ] }
-          },
+          // {
+          //   path: '/form/base-form',
+          //   name: 'BaseForm',
+          //   component: () => import('@/views/form/BasicForm'),
+          //   meta: { title: '基础表单', keepAlive: true, permission: [ 'form' ] }
+          // },
+          // {
+          //   path: '/form/step-form',
+          //   name: 'StepForm',
+          //   component: () => import('@/views/form/stepForm/StepForm'),
+          //   meta: { title: '分步表单', keepAlive: true, permission: [ 'form' ] }
+          // },
           {
             path: '/form/advanced-form',
             name: 'AdvanceForm',
             component: () => import('@/views/form/advancedForm/AdvancedForm'),
-            meta: { title: '高级表单', keepAlive: true, permission: [ 'form' ] }
+            meta: { title: '物品管理', keepAlive: true, permission: [ 'material' ] }
           }
         ]
       },

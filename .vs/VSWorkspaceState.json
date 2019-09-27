@@ -1,11 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\.github\\ISSUE_TEMPLATE",
     "\\src",
-    "\\src\\api",
-    "\\tests"
+    "\\src\\config",
+    "\\src\\router",
+    "\\src\\store",
+    "\\src\\store\\modules"
   ],
-  "SelectedNode": "\\package-lock.json",
+  "SelectedNode": "\\src\\store\\modules\\user.js",
   "PreviewInSolutionExplorer": false
 }
