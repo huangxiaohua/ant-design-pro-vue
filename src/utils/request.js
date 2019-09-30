@@ -12,12 +12,11 @@ const service = axios.create({
 })
 
 const err = (error) => {
-  console.log(error.response)
   if (error.response) {
     const data = error.response.data
     const token = Vue.ls.get(ACCESS_TOKEN)
 
-    console.log(token)
+    // console.log(token)
 
     if (error.response.status === 403) {
       notification.error({
@@ -25,6 +24,8 @@ const err = (error) => {
         description: data.message
       })
     }
+    console.log('--------------401------ ')
+    console.log(error.response)
     if (error.response.status === 401 && !(data.result && data.result.isLogin)) {
       notification.error({
         message: 'Unauthorized',
@@ -53,6 +54,8 @@ service.interceptors.request.use(config => {
 
 // response interceptor
 service.interceptors.response.use((response) => {
+  console.log('all request  ')
+  console.log(response)
   return response.data
 }, err)
 
