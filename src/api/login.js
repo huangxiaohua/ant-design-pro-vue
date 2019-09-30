@@ -1,7 +1,7 @@
 import api from './index'
 import { axios } from '@/utils/request'
-import { ACCESS_TOKEN } from '@/store/mutation-types'
-import Vue from 'vue'
+// import { ACCESS_TOKEN } from '@/store/mutation-types'
+// import Vue from 'vue'
 /**
  * login func
  * parameter: {
@@ -36,7 +36,7 @@ export function getSmsCaptcha (parameter) {
 }
 
 export function getInfo () {
-  console.log(Vue.ls.get(ACCESS_TOKEN))
+  // console.log(Vue.ls.get(ACCESS_TOKEN))
   return axios({
     url: '/user/info',
     method: 'get',
