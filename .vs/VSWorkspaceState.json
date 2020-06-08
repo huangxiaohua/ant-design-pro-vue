@@ -1,13 +1,6 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\src\\api",
-    "\\src\\config",
-    "\\src\\router",
-    "\\src\\store",
-    "\\src\\store\\modules",
-    "\\src\\utils"
+    ""
   ],
-  "SelectedNode": "\\.gitignore",
   "PreviewInSolutionExplorer": false
 }
