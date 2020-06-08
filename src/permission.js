@@ -18,15 +18,21 @@ router.beforeEach((to, from, next) => {
   to.meta && (typeof to.meta.title !== 'undefined' && setDocumentTitle(`${to.meta.title} - ${domTitle}`))
   if (Vue.ls.get(ACCESS_TOKEN)) {
     /* has token */
+    console.log(12343456)
+    console.log(ACCESS_TOKEN)
     if (to.path === '/user/login') {
       next({ path: defaultRoutePath })
       NProgress.done()
     } else {
+      console.log(store.getters.roles.length)
+      console.log('--------------------134')
       if (store.getters.roles.length === 0) {
         store
           .dispatch('GetInfo')
           .then(res => {
-            const roles = res.result && res.result.role
+            console.log('------------------userinfo')
+            console.log(res)
+            const roles = res.data && res.data.role
             store.dispatch('GenerateRoutes', { roles }).then(() => {
               // 根据roles权限生成可访问的路由表
               // 动态添加可访问路由表

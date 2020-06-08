@@ -69,7 +69,7 @@
           </span>
         </a-popover>
       </span>
-      <a-button type="primary" @click="validate" :loading="loading">提交</a-button>
+      <a-button type="primary" v-action:add @click="validate" :loading="loading">提交</a-button>
     </footer-tool-bar>
   </div>
 </template>

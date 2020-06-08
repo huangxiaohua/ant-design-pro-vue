@@ -8,19 +8,24 @@ import { ACCESS_TOKEN } from '@/store/mutation-types'
 // 创建 axios 实例
 const service = axios.create({
   baseURL: process.env.VUE_APP_API_BASE_URL, // api base_url
-  timeout: 6000 // 请求超时时间
+  timeout: 15000 // 请求超时时间
 })
 
 const err = (error) => {
   if (error.response) {
     const data = error.response.data
     const token = Vue.ls.get(ACCESS_TOKEN)
+
+    // console.log(token)
+
     if (error.response.status === 403) {
       notification.error({
         message: 'Forbidden',
         description: data.message
       })
     }
+    console.log('--------------401------ ')
+    console.log(error.response)
     if (error.response.status === 401 && !(data.result && data.result.isLogin)) {
       notification.error({
         message: 'Unauthorized',
@@ -42,13 +47,15 @@ const err = (error) => {
 service.interceptors.request.use(config => {
   const token = Vue.ls.get(ACCESS_TOKEN)
   if (token) {
-    config.headers['Access-Token'] = token // 让每个请求携带自定义 token 请根据实际情况自行修改
+    config.headers['Authorization'] = token // 让每个请求携带自定义 token 请根据实际情况自行修改 Access-Token
   }
   return config
 }, err)
 
 // response interceptor
 service.interceptors.response.use((response) => {
+  console.log('all request  ')
+  console.log(response)
   return response.data
 }, err)
 

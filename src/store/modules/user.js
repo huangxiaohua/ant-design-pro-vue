@@ -37,9 +37,11 @@ const user = {
     Login ({ commit }, userInfo) {
       return new Promise((resolve, reject) => {
         login(userInfo).then(response => {
-          const result = response.result
-          Vue.ls.set(ACCESS_TOKEN, result.token, 7 * 24 * 60 * 60 * 1000)
-          commit('SET_TOKEN', result.token)
+          const result = response.accessToken
+          console.log(response)
+          var token = 'Bearer ' + result.tokenContent
+          Vue.ls.set(ACCESS_TOKEN, token, 4 * 60 * 60 * 1000)
+          commit('SET_TOKEN', token)
           resolve()
         }).catch(error => {
           reject(error)
@@ -51,11 +53,14 @@ const user = {
     GetInfo ({ commit }) {
       return new Promise((resolve, reject) => {
         getInfo().then(response => {
-          const result = response.result
+          console.log(99999999)
+          console.log(response)
+          const result = response.data
 
           if (result.role && result.role.permissions.length > 0) {
             const role = result.role
             role.permissions = result.role.permissions
+
             role.permissions.map(per => {
               if (per.actionEntitySet != null && per.actionEntitySet.length > 0) {
                 const action = per.actionEntitySet.map(action => { return action.action })
@@ -66,6 +71,7 @@ const user = {
             commit('SET_ROLES', result.role)
             commit('SET_INFO', result)
           } else {
+            console.log(8888888)
             reject(new Error('getInfo: roles must be a non-null array !'))
           }
 
@@ -74,6 +80,8 @@ const user = {
 
           resolve(response)
         }).catch(error => {
+          console.log(error)
+          console.log('error abcdefdggjasldfkj')
           reject(error)
         })
       })
